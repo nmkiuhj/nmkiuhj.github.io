@@ -3,60 +3,101 @@
   <entry>
     <title>Hello World</title>
     <url>/posts/4a17b156/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very
+first post. Check <a href="https://hexo.io/docs/">documentation</a> for
+more info. If you get any problems when using Hexo, you can find the
+answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
+you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.
+<span id="more"></span></p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>RAID5配置流程</title>
     <url>/posts/109f11e7/</url>
-    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="查看磁盘状况"><a href="#查看磁盘状况" class="headerlink" title="查看磁盘状况"></a>查看磁盘状况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lsblk</span><br><span class="line">blkid</span><br><span class="line">sudo gdisk -l /dev/sda</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="配置">配置</h2>
+<h3 id="查看磁盘状况">查看磁盘状况</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lsblk</span><br><span class="line">blkid</span><br><span class="line">sudo gdisk -l /dev/sda</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p><img src="/posts/109f11e7//image.png" alt="alt text"></p>
-<h3 id="创建新的分区，type-code-为-FD00"><a href="#创建新的分区，type-code-为-FD00" class="headerlink" title="创建新的分区，type code 为 FD00"></a>创建新的分区，type code 为 FD00</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gdisk /dev/sda</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/109f11e7//image-1.png" alt="alt text"></p>
-<h3 id="刷新分区信息，这样才能看到新的分区"><a href="#刷新分区信息，这样才能看到新的分区" class="headerlink" title="刷新分区信息，这样才能看到新的分区"></a>刷新分区信息，这样才能看到新的分区</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo partprobe</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/109f11e7//image-2.png" alt="alt text"></p>
-<h3 id="以mdadm创建RAID，创建后查看RAID信息"><a href="#以mdadm创建RAID，创建后查看RAID信息" class="headerlink" title="以mdadm创建RAID，创建后查看RAID信息"></a>以mdadm创建RAID，创建后查看RAID信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 --auto=yes --name=0 --level=5 --chunk=512K --raid-devices=4 --spare-devices=1 /dev/sda&#123;5,6,7,8,9&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/109f11e7//image-3.png" alt="alt text"></p>
-<h3 id="查看RAID配置"><a href="#查看RAID配置" class="headerlink" title="查看RAID配置"></a>查看RAID配置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/109f11e7//image-4.png" alt="alt text"></p>
-<h3 id="将配置保存至-etc-mdadm-mdadm-conf"><a href="#将配置保存至-etc-mdadm-mdadm-conf" class="headerlink" title="将配置保存至/etc/mdadm/mdadm.conf"></a>将配置保存至<code>/etc/mdadm/mdadm.conf</code></h3><p>需要修改一下name的配置，否则<mark>系统重启设备名会变</mark><br><img src="/posts/109f11e7//image-7.png" alt="alt text"></p>
-<h3 id="格式化RAID"><a href="#格式化RAID" class="headerlink" title="格式化RAID"></a>格式化RAID</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取RAID的UUID，修改挂载配置"><a href="#获取RAID的UUID，修改挂载配置" class="headerlink" title="获取RAID的UUID，修改挂载配置"></a>获取RAID的UUID，修改挂载配置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo blkid /dev/md0</span><br><span class="line">sudo vim /etc/fstab</span><br><span class="line"></span><br><span class="line">#添加如下内容</span><br><span class="line">UUID=2126db3f-d304-4e15-b948-53e01bcc14f7 /srv/raid ext4 defaults 0 1</span><br><span class="line"></span><br><span class="line">#挂载</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/109f11e7//image-6.png" alt="alt text"></p>
-<p><mark>系统重启后，<code>/dev/md0</code>可能会变成<code>/dev/md127</code></mark><br>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#卸载磁盘</span><br><span class="line">sudo umount /dev/md127</span><br><span class="line">#停止RAID</span><br><span class="line">sudo mdadm --stop /dev/md127</span><br><span class="line">#使用 mdadm命令并指定设备名为 /dev/md0</span><br><span class="line">sudo mdadm --assemble /dev/md0 --name=0 --update=name /dev/sda&#123;5,6,7,8,9&#125;</span><br><span class="line">#将当前的 RAID 配置信息扫描并追加到 mdadm.conf配置文件中</span><br><span class="line">sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf</span><br><span class="line">#更新 initramfs​</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
-
-<h2 id="救援"><a href="#救援" class="headerlink" title="救援"></a>救援</h2><h3 id="模拟磁盘损坏"><a href="#模拟磁盘损坏" class="headerlink" title="模拟磁盘损坏"></a>模拟磁盘损坏</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --fail /dev/sda7</span><br></pre></td></tr></table></figure>
-<p>系统自动开始修复！<br><img src="/posts/109f11e7//image-8.png" alt="alt text"></p>
-<h3 id="等待修复完成！"><a href="#等待修复完成！" class="headerlink" title="等待修复完成！"></a>等待修复完成！</h3><p><img src="/posts/109f11e7//image-9.png" alt="alt text"></p>
-<h3 id="将错误磁盘移除并添加新磁盘"><a href="#将错误磁盘移除并添加新磁盘" class="headerlink" title="将错误磁盘移除并添加新磁盘"></a>将错误磁盘移除并添加新磁盘</h3><ol>
-<li>先移除错误磁盘<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --remove /dev/sda7</span><br></pre></td></tr></table></figure></li>
+<figure>
+<img src="/posts/109f11e7//image.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h3 id="创建新的分区type-code-为-fd00">创建新的分区，type code 为
+FD00</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gdisk /dev/sda</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/posts/109f11e7//image-1.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h3 id="刷新分区信息这样才能看到新的分区">刷新分区信息，这样才能看到新的分区</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo partprobe</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/posts/109f11e7//image-2.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h3 id="以mdadm创建raid创建后查看raid信息">以mdadm创建RAID，创建后查看RAID信息</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 --auto=yes --name=0 --level=5 --chunk=512K --raid-devices=4 --spare-devices=1 /dev/sda&#123;5,6,7,8,9&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/posts/109f11e7//image-3.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h3 id="查看raid配置">查看RAID配置</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/109f11e7//image-4.png" alt="alt text"> ###
+将配置保存至<code>/etc/mdadm/mdadm.conf</code>
+需要修改一下name的配置，否则<mark>系统重启设备名会变</mark> <img src="/posts/109f11e7//image-7.png" alt="alt text"></p>
+<h3 id="格式化raid">格式化RAID</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></figure>
+<h3 id="获取raid的uuid修改挂载配置">获取RAID的UUID，修改挂载配置</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo blkid /dev/md0</span><br><span class="line">sudo vim /etc/fstab</span><br><span class="line"></span><br><span class="line">#添加如下内容</span><br><span class="line">UUID=2126db3f-d304-4e15-b948-53e01bcc14f7 /srv/raid ext4 defaults 0 1</span><br><span class="line"></span><br><span class="line">#挂载</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/posts/109f11e7//image-6.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p><mark>系统重启后，<code>/dev/md0</code>可能会变成<code>/dev/md127</code></mark>
+解决方案： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#卸载磁盘</span><br><span class="line">sudo umount /dev/md127</span><br><span class="line">#停止RAID</span><br><span class="line">sudo mdadm --stop /dev/md127</span><br><span class="line">#使用 mdadm命令并指定设备名为 /dev/md0</span><br><span class="line">sudo mdadm --assemble /dev/md0 --name=0 --update=name /dev/sda&#123;5,6,7,8,9&#125;</span><br><span class="line">#将当前的 RAID 配置信息扫描并追加到 mdadm.conf配置文件中</span><br><span class="line">sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf</span><br><span class="line">#更新 initramfs​</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure></p>
+<h2 id="救援">救援</h2>
+<h3 id="模拟磁盘损坏">模拟磁盘损坏</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --fail /dev/sda7</span><br></pre></td></tr></table></figure>
+<p>系统自动开始修复！ <img src="/posts/109f11e7//image-8.png" alt="alt text"></p>
+<h3 id="等待修复完成">等待修复完成！</h3>
+<figure>
+<img src="/posts/109f11e7//image-9.png" alt="alt text">
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h3 id="将错误磁盘移除并添加新磁盘">将错误磁盘移除并添加新磁盘</h3>
+<ol type="1">
+<li>先移除错误磁盘 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --remove /dev/sda7</span><br></pre></td></tr></table></figure></li>
 <li>系统关机，拔出错误磁盘，插入新磁盘</li>
-<li>将新的磁盘添加到RAID中<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --add /dev/sda7</span><br></pre></td></tr></table></figure></li>
+<li>将新的磁盘添加到RAID中 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --manage /dev/md0 --add /dev/sda7</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h2><h3 id="有多余插槽情况"><a href="#有多余插槽情况" class="headerlink" title="有多余插槽情况"></a>有多余插槽情况</h3><h4 id="将新硬盘加入阵列"><a href="#将新硬盘加入阵列" class="headerlink" title="将新硬盘加入阵列"></a>将新硬盘加入阵列</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm /dev/md0 --add /dev/sda10</span><br></pre></td></tr></table></figure>
-
-<h4 id="扩展阵列-RAID-级别-增加磁盘数量"><a href="#扩展阵列-RAID-级别-增加磁盘数量" class="headerlink" title="扩展阵列 RAID 级别 (增加磁盘数量)"></a>扩展阵列 RAID 级别 (增加磁盘数量)</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --grow /dev/md0 --raid-devices=5 --backup-file=/root/md0.backup</span><br></pre></td></tr></table></figure>
-<p>  –backup-file是一个重要安全措施，用于在重塑过程意外中断时恢复。</p>
-<h4 id="等待重建，可能非常耗时"><a href="#等待重建，可能非常耗时" class="headerlink" title="等待重建，可能非常耗时"></a>等待重建，可能非常耗时</h4><h4 id="调整文件系统大小以使用所有可用空间（针对-ext2-3-4）。"><a href="#调整文件系统大小以使用所有可用空间（针对-ext2-3-4）。" class="headerlink" title="调整文件系统大小以使用所有可用空间（针对 ext2&#x2F;3&#x2F;4）。"></a>调整文件系统大小以使用所有可用空间（针对 ext2&#x2F;3&#x2F;4）。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo resize2fs /dev/md0</span><br></pre></td></tr></table></figure>
-
-<h3 id="无多余插槽情况"><a href="#无多余插槽情况" class="headerlink" title="无多余插槽情况"></a>无多余插槽情况</h3><p>这就比较难办了。。。</p>
+<h2 id="扩容">扩容</h2>
+<h3 id="有多余插槽情况">有多余插槽情况</h3>
+<h4 id="将新硬盘加入阵列">将新硬盘加入阵列</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm /dev/md0 --add /dev/sda10</span><br></pre></td></tr></table></figure>
+<h4 id="扩展阵列-raid-级别-增加磁盘数量">扩展阵列 RAID 级别
+(增加磁盘数量)</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mdadm --grow /dev/md0 --raid-devices=5 --backup-file=/root/md0.backup</span><br></pre></td></tr></table></figure>
+<p>–backup-file是一个重要安全措施，用于在重塑过程意外中断时恢复。</p>
+<h4 id="等待重建可能非常耗时">等待重建，可能非常耗时</h4>
+<h4 id="调整文件系统大小以使用所有可用空间针对-ext234">调整文件系统大小以使用所有可用空间（针对
+ext2/3/4）。</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo resize2fs /dev/md0</span><br></pre></td></tr></table></figure>
+<h3 id="无多余插槽情况">无多余插槽情况</h3>
+<p>这就比较难办了。。。</p>
 ]]></content>
       <categories>
         <category>运维</category>
@@ -70,18 +111,24 @@
   <entry>
     <title>安装配置x11vnc</title>
     <url>/posts/5a9079ea/</url>
-    <content><![CDATA[<h3 id="安装x11vnc"><a href="#安装x11vnc" class="headerlink" title="安装x11vnc"></a>安装x11vnc</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install x11vnc</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h3 id="安装x11vnc">安装x11vnc</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install x11vnc</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h3 id="生成密码文件"><a href="#生成密码文件" class="headerlink" title="生成密码文件"></a>生成密码文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo x11vnc -storepasswd /etc/x11vnc.pass</span><br></pre></td></tr></table></figure>
-
-<h3 id="为了在系统启动时自动启动x11vnc，需要创建systemctl服务"><a href="#为了在系统启动时自动启动x11vnc，需要创建systemctl服务" class="headerlink" title="为了在系统启动时自动启动x11vnc，需要创建systemctl服务"></a>为了在系统启动时自动启动x11vnc，需要创建systemctl服务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/x11vnc.service</span><br><span class="line"></span><br><span class="line"># 输入以下内容</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=Start x11vnc at startup</span><br><span class="line">After=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/bin/x11vnc -auth /run/user/1000/gdm/Xauthority -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable x11vnc</span><br><span class="line">sudo systemctl start x11vnc</span><br></pre></td></tr></table></figure>
-
-<h3 id="可选：调整桌面共享设置"><a href="#可选：调整桌面共享设置" class="headerlink" title="可选：调整桌面共享设置"></a>可选：调整桌面共享设置</h3><p><mark>在某些情况下，可能需要禁用加密要求以确保与 macOS 屏幕共享客户端的兼容性。这可以解决连接时出现的 “不兼容” 错误 。</mark><br>使用 dconf-editor工具</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install dconf-editor</span><br></pre></td></tr></table></figure>
-<p>打开后，导航到 org &gt; gnome &gt; desktop &gt; remote-session（或者remote-access），并将 require-encryption设置为 false。</p>
-<h3 id="确保防火墙开放5900端口"><a href="#确保防火墙开放5900端口" class="headerlink" title="确保防火墙开放5900端口"></a>确保防火墙开放5900端口</h3>]]></content>
+<h3 id="生成密码文件">生成密码文件</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo x11vnc -storepasswd /etc/x11vnc.pass</span><br></pre></td></tr></table></figure>
+<h3 id="为了在系统启动时自动启动x11vnc需要创建systemctl服务">为了在系统启动时自动启动x11vnc，需要创建systemctl服务</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/x11vnc.service</span><br><span class="line"></span><br><span class="line"># 输入以下内容</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=Start x11vnc at startup</span><br><span class="line">After=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/bin/x11vnc -auth /run/user/1000/gdm/Xauthority -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务">启动服务</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable x11vnc</span><br><span class="line">sudo systemctl start x11vnc</span><br></pre></td></tr></table></figure>
+<h3 id="可选调整桌面共享设置">可选：调整桌面共享设置</h3>
+<p><mark>在某些情况下，可能需要禁用加密要求以确保与 macOS
+屏幕共享客户端的兼容性。这可以解决连接时出现的 “不兼容” 错误
+。</mark><br>
+使用 dconf-editor工具 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install dconf-editor</span><br></pre></td></tr></table></figure> 打开后，导航到 org &gt; gnome &gt;
+desktop &gt; remote-session（或者remote-access），并将
+require-encryption设置为 false。</p>
+<h3 id="确保防火墙开放5900端口">确保防火墙开放5900端口</h3>
+]]></content>
       <categories>
         <category>运维</category>
         <category>远程联机</category>
