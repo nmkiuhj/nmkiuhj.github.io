@@ -21,6 +21,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>找回docker容器的启动命令</title>
+    <url>/posts/109f11e7/</url>
+    <content><![CDATA[<h1 id="找回docker容器的启动命令"><a href="#找回docker容器的启动命令" class="headerlink" title="找回docker容器的启动命令"></a>找回docker容器的启动命令</h1><p>使用get_command_4_run_container工具能够直接获取docker容器的启动命令，参数齐全！</p>
+<span id="more"></span>
+
+<h3 id="拉取工具镜像"><a href="#拉取工具镜像" class="headerlink" title="拉取工具镜像"></a>拉取工具镜像</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker pull cucker/get_command_4_run_container  # 一键get工具</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行工具，返回命令"><a href="#运行工具，返回命令" class="headerlink" title="运行工具，返回命令"></a>运行工具，返回命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  cucker/get_command_4_run_container &lt;容器ID&gt;  # 直接输出完整run命令！</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RAID5配置流程</title>
     <url>/posts/109f11e7/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="查看磁盘状况"><a href="#查看磁盘状况" class="headerlink" title="查看磁盘状况"></a>查看磁盘状况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lsblk</span><br><span class="line">blkid</span><br><span class="line">sudo gdisk -l /dev/sda</span><br></pre></td></tr></table></figure>
@@ -63,8 +81,8 @@
         <category>RAID</category>
       </categories>
       <tags>
-        <tag>运维</tag>
         <tag>Linux</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -87,8 +105,8 @@
         <category>远程联机</category>
       </categories>
       <tags>
-        <tag>运维</tag>
         <tag>Linux</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
 </search>
